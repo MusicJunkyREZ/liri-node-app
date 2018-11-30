@@ -1,12 +1,13 @@
+//Required 
 require("dotenv").config();
 var axios = require("axios");
 var moment = require("moment");
 var fs = require("fs");
 
+//For Spotify keys
 const env = process.env;
 
 var Spotify = require('node-spotify-api');
-
 
 var spotify = new Spotify({
     id: env.SPOTIFY_ID,
@@ -26,9 +27,9 @@ for (var i = 3; i < query.length; i++) {
 }
 
 array.splice(-1); //Get rid of last plus sign, if left errors caused
-var finalSearch = array.join("");
+var finalSearch = array.join(""); //Search query joined together to form string for any query below
 
-//Switch statement to determine type selected
+//Switch statement to determine type selected. (Ex. concert-this, movie-this, etc.)
 switch (type) {
     case 'concert-this':
         concertMe()
@@ -47,6 +48,8 @@ switch (type) {
 }
 
 
+// node liri.js concert-this
+
 function concertMe() {
     if (finalSearch === "") {
         console.log('\n')
@@ -59,12 +62,6 @@ function concertMe() {
                console.log("No info for this Artist")
            }else {
             for(var i=0; i < response.data.length; i++) {
-                // console.log(response.data[i])
-                // console.log('\n')
-                // console.log("Venue: " + response.data[i].venue.name)
-                // console.log("Location: " + response.data[i].venue.city + ", " + response.data[0].venue.region)
-                // console.log("Event Date: " + moment(response.data[i].datetime).format('LL'))
-                // console.log('\n')
 
                 var currData = `\n
     Venue: ${response.data[i].venue.name}
@@ -79,9 +76,9 @@ function concertMe() {
         }
     );
     }
-
-    
 }
+
+// node liri.js spotify-this-song
 
 function spotifyIt() {
 
@@ -97,18 +94,6 @@ function spotifyIt() {
             return console.log('Error occurred: ' + err);
         }
         console.log('\n')
-        console.log("Artist: " + data.tracks.items[0].artists[0].name)
-        console.log("Track: " + data.tracks.items[0].name)
-        console.log("Preview: " + data.tracks.items[0].preview_url)
-        console.log("Album: " + data.tracks.items[0].album.name)
-        // if (finalSearch === "ace+of+base+the+sign") {
-        //     //API does not provide Month & Date for Release Date of Ace of Base - The Sign. Only the year
-        //     console.log("Released: October 29, " + data.tracks.items[0].album.release_date)
-        // } else {
-        //     console.log("Released: " + moment(data.tracks.items[0].album.release_date).format('MMMM Do YYYY'))
-        // }
-        
-        console.log('\n')
 
         var currData = `\n
     Artist: ${data.tracks.items[0].artists[0].name}
@@ -116,11 +101,13 @@ function spotifyIt() {
     Preview: ${data.tracks.items[0].preview_url}
     Album: ${data.tracks.items[0].album.name}
             `
-
+            console.log(currData)
             dataLog(currData)
 
     });
 }
+
+// node liri.js movie-this
 
 function movieThis() {
 
@@ -130,16 +117,16 @@ function movieThis() {
 
     axios.get("http://www.omdbapi.com/?t=" + finalSearch + "&y=&plot=short&apikey=trilogy").then(
         function (response) {
-            console.log('\n')
-            console.log("Title: " + response.data.Title);
-            console.log("Released: " + response.data.Year);
-            console.log("IMDB Rating: " + response.data.imdbRating);
-            console.log("Rotten Tomatos Rating: " + response.data.Ratings[1].Value);
-            console.log("Country: " + response.data.Country);
-            console.log("Language: " + response.data.Language);
-            console.log("Plot: " + response.data.Plot);
-            console.log("Actors: " + response.data.Actors);
-            console.log('\n')
+            // console.log('\n')
+            // console.log("Title: " + response.data.Title);
+            // console.log("Released: " + response.data.Year);
+            // console.log("IMDB Rating: " + response.data.imdbRating);
+            // console.log("Rotten Tomatos Rating: " + response.data.Ratings[1].Value);
+            // console.log("Country: " + response.data.Country);
+            // console.log("Language: " + response.data.Language);
+            // console.log("Plot: " + response.data.Plot);
+            // console.log("Actors: " + response.data.Actors);
+            // console.log('\n')
 
             var currData = `\n
     Title: ${response.data.Title}
@@ -151,7 +138,7 @@ function movieThis() {
     Plot: ${response.data.Plot}
     Actors: ${response.data.Actors}
             `
-
+            console.log(currData)
             dataLog(currData)
         }
     );
@@ -159,23 +146,23 @@ function movieThis() {
     
 }
 
+// node liri.js do-what-it-says
+
 function itSays() {
     fs.readFile("random.txt", "utf8", function(error, data) {
 
         if (error) {
           return console.log(error);
         }
-      
-        // console.log(data);
+
         var dataArr = data.split(",");
-        // console.log(dataArr);
       
         finalSearch = dataArr[1];
         spotifyIt()
       });
 }
 
-//Input Logger & Data Logger
+//Input Logger - see log.txt
 
 var logQuery = query.splice(0,2)
 logQuery =  "\n" + query.join(" ") + "\n"
@@ -191,6 +178,8 @@ fs.appendFile("log.txt", logQuery, function(err) {
   
   });
 
+//Data Logger - see log.txt
+
 function dataLog(data) {
     fs.appendFile("log.txt", data, function(err) {
 
@@ -202,3 +191,4 @@ function dataLog(data) {
       
       });
   }
+
