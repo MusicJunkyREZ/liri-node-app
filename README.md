@@ -8,6 +8,8 @@ To retrieve a listing of upcoming concerts from a specific band/artist enter:
 
 ``` node liri.js concert-this <enter in specific band/artist>```
 
+![Image of concert-this command](images/concert-this_with_band.png)
+
 To retrieve song info from your favorite track enter:
 
 ``` node liri.js spotify-this-song <enter song>```
