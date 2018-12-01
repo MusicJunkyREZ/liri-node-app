@@ -14,10 +14,16 @@ To retrieve song info from your favorite track enter:
 
 ``` node liri.js spotify-this-song <enter song>```
 
+![Image of concert-this command](images/spotify-this-song_with_song.png)
+
 To retrieve movie info from your favorite film enter:
 
 ``` node liri.js movie-this <enter movie name>```
 
+![Image of concert-this command](images/movie-this_with_movie.png)
+
 Bonous command below. Enter and see what it does:
 
 ``` node liri.js do-what-it-says```
+
+![Image of concert-this command](images/do-what-it-says.png)
