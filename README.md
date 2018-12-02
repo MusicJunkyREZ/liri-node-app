@@ -2,7 +2,7 @@
 
 ### Overview
 
-LIRI is a command line node app that takes in parameters and gives you back data. This app uses axios to retrieve data from Bands in Town, OMBD and Spotify. 
+LIRI is a command line node app that takes in parameters and gives you back data. This app uses axios to retrieve data from Bands in Town, OMDB and Spotify. 
 
 To retrieve a listing of upcoming concerts from a specific band/artist enter:
 
