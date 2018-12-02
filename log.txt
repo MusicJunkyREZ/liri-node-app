@@ -1,0 +1,34 @@
+
+concerti-this fleetwood mac
+
+concert-this fleetwood mac
+
+
+    Venue: Wembley Stadium
+    Location: Wembley, CO
+    Event Date: June 18, 2019
+            
+spotify-this-song
+
+
+    Artist: Ace of Base
+    Track: The Sign
+    Preview: https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=6aec2e5ae4cd4bd7a5b525f74851c8ed
+    Album: The Sign (US Album) [Remastered]
+            
+spotify-this-song gold on the ceiling
+
+
+    Artist: The Black Keys
+    Track: Gold On The Ceiling
+    Preview: https://p.scdn.co/mp3-preview/ff2b18fdee4aa8f3945a03b6adcb2b67e04b9448?cid=6aec2e5ae4cd4bd7a5b525f74851c8ed
+    Album: El Camino
+            
+do-what-it-says
+
+
+    Artist: Backstreet Boys
+    Track: I Want It That Way
+    Preview: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=6aec2e5ae4cd4bd7a5b525f74851c8ed
+    Album: The Hits--Chapter One
+            
